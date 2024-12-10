@@ -3,10 +3,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "generate:markdown": "ts-node --project tsconfig.json scripts/generateMdFromSwagger.ts"
   },
   "dependencies": {
-    "@markdoc/markdoc": "latest",
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "@markdoc/markdoc": "^0.4.0",
     "@markdoc/next.js": "latest",
     "next": "latest",
     "prismjs": "latest",
@@ -17,6 +19,8 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "latest"
   }
 }
