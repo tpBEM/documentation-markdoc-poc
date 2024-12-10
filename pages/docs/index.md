@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Docs
 ---
 
 # {% $markdoc.frontmatter.title %}
