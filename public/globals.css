@@ -35,3 +35,17 @@ h2 {
 a {
   color: rgba(75, 85, 99, 1);
 }
+
+/* curl snippet styling */
+button {
+  border-radius: 4px 4px 0 0;
+  margin-right: 4px;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+button:focus {
+  outline: none;
+}
