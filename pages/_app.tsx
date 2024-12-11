@@ -14,6 +14,8 @@ import '../public/globals.css'
 import type { AppProps } from 'next/app'
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js'
 
+import { ConstellationProvider } from "@trustpilot/constellation-components";
+
 const TITLE = 'Markdoc';
 const DESCRIPTION = 'A powerful, flexible, Markdown-based authoring framework';
 
@@ -72,23 +74,30 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TopNav>
-        <Link href="/docs">Docs</Link>
+        <Link href="/docs" className="topnav-white-text">Docs</Link>
       </TopNav>
       <div className="page">
         <SideNav />
-        <main className="flex column">
-          <Component {...pageProps} />
+        <main className="main-content">
+          <ConstellationProvider locale="en-US">
+            <Component {...pageProps} />
+          </ConstellationProvider>
         </main>
         <TableOfContents toc={toc} />
       </div>
       <style jsx>
         {`
           .page {
-            position: fixed; 
-            top: var(--top-nav-height);
             display: flex;
             width: 100vw;
+            height: 100vh;
+          }
+          .main-content {
+            margin-left: 250px; /* Same width as the sidenav */
+            padding: 20px;
+            padding-top: 60px; /* Add padding at the top */
             flex-grow: 1;
+            overflow: auto;
           }
           main {
             overflow: auto;

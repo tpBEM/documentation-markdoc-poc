@@ -1,3 +1,5 @@
+@import "highlight.js/styles/github.css";
+
 :root {
   --top-nav-height: 51px;
   --border-color: #dce6e9;
@@ -24,6 +26,7 @@ p {
 
 h1 {
   font-size: 40px;
+  color: #04da8d;
 }
 
 h2 {
@@ -32,4 +35,23 @@ h2 {
 
 a {
   color: rgba(75, 85, 99, 1);
+}
+
+/* curl snippet styling */
+button {
+  border-radius: 4px 4px 0 0;
+  margin-right: 4px;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* top nav */
+.topnav-white-text {
+  color: white;
 }

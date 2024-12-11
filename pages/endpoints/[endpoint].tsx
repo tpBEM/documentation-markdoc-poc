@@ -4,6 +4,7 @@ import { parseSwaggerFile } from '../../utils/swagger';
 import { Parameter, Endpoint } from '../../components/SwaggerTags';
 import ParametersTable from '../../components/ParametersTable';
 import ResponseDetails from '../../components/ResponseDetails';
+import CurlSnippet from '../../components/CurlSnippet';
 
 interface EndpointPageProps {
   content: any;
@@ -14,8 +15,8 @@ const EndpointPage: React.FC<EndpointPageProps> = ({ content }) => {
     return <div>Content not found</div>;
   }
 
-  console.log('Content', content);
-  console.log('Content Type', typeof content);
+  // Generate the curl command based on the endpoint data
+  const curlCommand = `curl -X GET "https://api.tp-staging.com${content.attributes.path}" -H "accept: application/json"`;
 
   const responses = content.children
     .filter((child: any) => child.type === 'response')
@@ -53,6 +54,8 @@ const EndpointPage: React.FC<EndpointPageProps> = ({ content }) => {
       <ParametersTable parameters={content.children.filter((child: any) => child.type === 'parameter').map((child: any) => child.attributes)} />
       <h2>Responses</h2>
       <ResponseDetails responses={responses} />
+      <h2>Curl Command</h2>
+      <CurlSnippet command={curlCommand} lang="bash" />
     </div>
   );
 };

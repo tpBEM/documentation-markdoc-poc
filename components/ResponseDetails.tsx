@@ -45,18 +45,20 @@ const ResponseDetails: React.FC<ResponseDetailsProps> = ({ responses }) => {
           gap: 10px;
         }
         .toggle-button {
-          background-color: #0070f3;
+          background-color: black;
           color: white;
           border: none;
           padding: 10px;
           cursor: pointer;
           border-radius: 5px;
+          transition: background-color 0.3s ease, color 0.3s ease;
         }
         .toggle-button.active {
-          background-color: #28a745;
+          background-color: #04da8d;
+          color: black;
         }
         .toggle-button:hover {
-          background-color: #005bb5;
+          background-color: #333;
         }
         .details {
           margin-top: 10px;

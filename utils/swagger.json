@@ -204,6 +204,25 @@
             },
             "x-trustpilot-servicename": "categories-apis"
         },
+        "businessunits.Error": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "details": {
+                    "type": "string"
+                },
+                "correlationId": {
+                    "type": "string"
+                }
+            },
+            "x-trustpilot-servicename": "businessunits-api"
+        },
         "PublicLocationsResponse": {
             "description": "Success",
             "schema": {
