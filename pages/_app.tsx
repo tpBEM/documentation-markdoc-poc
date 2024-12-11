@@ -14,6 +14,8 @@ import '../public/globals.css'
 import type { AppProps } from 'next/app'
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js'
 
+import { ConstellationProvider } from "@trustpilot/constellation-components";
+
 const TITLE = 'Markdoc';
 const DESCRIPTION = 'A powerful, flexible, Markdown-based authoring framework';
 
@@ -77,7 +79,9 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       <div className="page">
         <SideNav />
         <main className="flex column">
-          <Component {...pageProps} />
+        <ConstellationProvider locale="en-US">
+        <Component {...pageProps} />
+    </ConstellationProvider>
         </main>
         <TableOfContents toc={toc} />
       </div>
