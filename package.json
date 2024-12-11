@@ -12,7 +12,8 @@
     "next": "latest",
     "prismjs": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-highlight": "^0.15.0"
   },
   "devDependencies": {
     "@types/node": "latest",
