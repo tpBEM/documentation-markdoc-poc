@@ -1,11 +1,11 @@
 import React from 'react';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const items = [
   {
     title: 'Get started',
-    links: [{href: '/docs', children: 'Docs'}, {href: '/overview', children: 'Overview'}, {href: '/styling', children: 'Trustpilot Styling'}],
+    links: [{ href: '/docs', children: 'Docs' }, { href: '/overview', children: 'Overview' }, { href: '/styling', children: 'Trustpilot Styling' }, { href: '/curl', children: 'Curl Snippet' }],
   },
 ];
 
