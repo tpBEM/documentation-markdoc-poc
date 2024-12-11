@@ -1,12 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-export function TopNav({children}) {
+export function TopNav({ children }) {
   return (
     <nav>
-      <Link href="/" className="flex">
-        Home
-      </Link>
+      <img src='/images/tp_logo.png' alt='Trustpilot logo' />
       <section>{children}</section>
       <style jsx>
         {`
@@ -20,7 +18,7 @@ export function TopNav({children}) {
             justify-content: space-between;
             gap: 1rem;
             padding: 1rem 2rem;
-            background: white;
+            background: #000000;
             border-bottom: 1px solid var(--border-color);
           }
           nav :global(a) {
@@ -30,6 +28,10 @@ export function TopNav({children}) {
             display: flex;
             gap: 1rem;
             padding: 0;
+          }
+          img {
+            max-width: 100px;
+            height: auto;
           }
         `}
       </style>

@@ -63,12 +63,12 @@ const styles = {
     },
     activeTab: {
         color: "#1f2937",
-        borderBottom: "2px solid #3b82f6",
-        backgroundColor: "#f3f4f6",
+        borderBottom: "2px solid #ffe500",
+        backgroundColor: "#04da8d",
     },
     codeContainer: {
         padding: "16px",
-        backgroundColor: "#1e293b",
+        backgroundColor: "#000000",
         color: "#ffffff",
         fontSize: "14px",
         lineHeight: "1.5",

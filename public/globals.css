@@ -26,6 +26,7 @@ p {
 
 h1 {
   font-size: 40px;
+  color: #04da8d;
 }
 
 h2 {
@@ -48,4 +49,9 @@ button:hover {
 
 button:focus {
   outline: none;
+}
+
+/* top nav */
+.topnav-white-text {
+  color: white;
 }
