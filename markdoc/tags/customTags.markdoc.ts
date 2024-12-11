@@ -1,6 +1,6 @@
 import { Schema } from '@markdoc/markdoc';
 
-export const customTags: Record<string, Schema> = {
+export const swaggerTags: Record<string, Schema> = {
   parameter: {
     render: 'Parameter',
     attributes: {
