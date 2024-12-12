@@ -1,0 +1,390 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Trustpilot API"
+    },
+    "host": "api.tp-staging.com",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/v1/business-units/find": {
+            "get": {
+                "tags": [
+                    "Business Units API (public)"
+                ],
+                "summary": "Find a business unit",
+                "description": "Returns the business unit given by the provided name",
+                "operationId": "V1Business-unitsFindByName",
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/businessunits.PublicGetBusinessUnitResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Name is not specified",
+                        "schema": {
+                            "$ref": "#/definitions/businessunits.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The business unit cannot be found",
+                        "schema": {
+                            "$ref": "#/definitions/businessunits.Error"
+                        }
+                    }
+                },
+                "x-trustpilot-api-visibility": "public",
+                "x-trustpilot-api-security": "none",
+                "security": [
+                    {
+                        "none": []
+                    }
+                ],
+                "x-trustpilot-servicename": "businessunits-api"
+            }
+        },
+        "/v1/business-units/all": {
+            "get": {
+                "tags": [
+                    "Business Units API (public)"
+                ],
+                "summary": "Get a list of all business units",
+                "description": "Page all business units, including the ones without reviews. Use cursor value from previous response to get the next page of results.",
+                "operationId": "V1Business-unitsAllGet",
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "description": "Filter by specific countries using ISO 3166-1-alpha-2.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "The number of business units to retrieve per page.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 1000,
+                        "maximum": 1000,
+                        "minimum": 1
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "The cursor values from the previous page response used to retrieve the next page of results.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "If any of the query parameters fails to validate successfully",
+                        "schema": {
+                            "$ref": "#/definitions/businessunits.Error"
+                        }
+                    },
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/businessunits.PublicGetBusinessUnitListResponse"
+                        }
+                    }
+                },
+                "x-trustpilot-api-visibility": "public",
+                "x-trustpilot-api-security": "none",
+                "security": [
+                    {
+                        "none": []
+                    }
+                ],
+                "x-trustpilot-servicename": "businessunits-api"
+            }
+        }
+    },
+    "parameters": {
+        "businessverifications.BusinessVerificationIdRequired": {
+            "name": "businessVerificationId",
+            "in": "path",
+            "description": "The id of business verification.",
+            "required": true,
+            "type": "string",
+            "x-example": "f3586c0c-f3ea-4c6e-a7f7-642212595a3c",
+            "x-trustpilot-servicename": "businessverifications-api"
+        },
+        "businessverifications.BusinessUnitIdRequired": {
+            "name": "businessUnitId",
+            "in": "path",
+            "description": "The id of business unit.",
+            "required": true,
+            "type": "string",
+            "x-example": "60ed914e30be990001b42ff1",
+            "x-trustpilot-servicename": "businessverifications-api"
+        },
+        "businessverifications.VeriffSessionRequestBody": {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "required": [
+                    "firstName",
+                    "lastName"
+                ],
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "x-trustpilot-servicename": "businessverifications-api"
+        },
+        "QuestionId": {
+            "name": "questionId",
+            "description": "ID of the question",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "x-trustpilot-servicename": "qanda-api"
+        },
+        "CreateQuestion": {
+            "name": "createQuestion",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/CreateQuestion"
+            },
+            "x-trustpilot-servicename": "qanda-api"
+        },
+        "UpdateQuestion": {
+            "name": "updateQuestion",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "$ref": "#/definitions/UpdateQuestion"
+            },
+            "x-trustpilot-servicename": "qanda-api"
+        }
+    },
+    "responses": {
+        "CategoriesErrorResponse": {
+            "description": "Unexpected error",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            },
+            "x-trustpilot-servicename": "categories-apis"
+        },
+        "businessunits.Error": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "details": {
+                    "type": "string"
+                },
+                "correlationId": {
+                    "type": "string"
+                }
+            },
+            "x-trustpilot-servicename": "businessunits-api"
+        },
+        "PublicLocationsResponse": {
+            "description": "Success",
+            "schema": {
+                "required": [
+                    "locations"
+                ],
+                "properties": {
+                    "locations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/PublicLocation"
+                        }
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Link"
+                        }
+                    },
+                    "totalLocationsCount": {
+                        "type": "number"
+                    }
+                }
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "LocationsStandardErrorResponse": {
+            "description": "Unexpected error",
+            "schema": {
+                "$ref": "#/definitions/LocationError"
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "PublicSingleLocationResponse": {
+            "description": "Success",
+            "schema": {
+                "$ref": "#/definitions/PublicSingleLocation"
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "InternalSingleLocationResponse": {
+            "description": "Success",
+            "schema": {
+                "$ref": "#/definitions/InternalSingleLocation"
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "PrivatePendingLocationsResponse": {
+            "description": "Success",
+            "schema": {
+                "required": [
+                    "locations"
+                ],
+                "properties": {
+                    "locations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/PrivatePendingLocation"
+                        }
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Link"
+                        }
+                    }
+                }
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "PendingImportStatusResponse": {
+            "description": "success",
+            "schema": {
+                "$ref": "#/definitions/PendingImportStatus"
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "PrivatePendingLocationResponse": {
+            "description": "Success",
+            "schema": {
+                "$ref": "#/definitions/PrivatePendingLocation"
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "PrivateLocationsResponse": {
+            "description": "Success",
+            "schema": {
+                "required": [
+                    "locations"
+                ],
+                "properties": {
+                    "locations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/PrivateLocation"
+                        }
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Link"
+                        }
+                    }
+                }
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "PrivateLocationResponse": {
+            "description": "Success",
+            "schema": {
+                "$ref": "#/definitions/PrivateLocation"
+            },
+            "x-trustpilot-servicename": "locations-api"
+        },
+        "NotFoundError": {
+            "description": "Not found. The requested resource was not found.",
+            "schema": {
+                "$ref": "#/definitions/GeneralError"
+            },
+            "x-trustpilot-servicename": "qanda-api"
+        },
+        "GeneralError": {
+            "description": "Unexpected error",
+            "schema": {
+                "$ref": "#/definitions/GeneralError"
+            },
+            "x-trustpilot-servicename": "qanda-api"
+        },
+        "Question": {
+            "description": "Question information",
+            "schema": {
+                "$ref": "#/definitions/Question"
+            },
+            "x-trustpilot-servicename": "qanda-api"
+        },
+        "UnauthorizedError": {
+            "description": "Unauthorized request. You don't have access to the requested resource.",
+            "schema": {
+                "$ref": "#/definitions/GeneralError"
+            },
+            "x-trustpilot-servicename": "qanda-api"
+        },
+        "BadRequestError": {
+            "description": "Bad request. One or more of the parameters are missing or are not valid according to the specification.",
+            "schema": {
+                "$ref": "#/definitions/GeneralError"
+            },
+            "x-trustpilot-servicename": "qanda-api"
+        },
+        "ErrorResponse": {
+            "description": "ErrorResponse",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            },
+            "x-trustpilot-servicename": "servicereviewsaggregator-api"
+        },
+        "ConsumerAuthStandardErrorResponse": {
+            "description": "Unexpected error",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            },
+            "x-trustpilot-servicename": "social-api"
+        }
+    }
+}

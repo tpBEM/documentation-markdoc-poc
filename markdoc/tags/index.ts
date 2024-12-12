@@ -2,6 +2,7 @@
 export * from './callout.markdoc';
 export * from './image.markdoc';
 export * from './redtext.markdoc';
+export * from './customTags.markdoc';
 export * from './togglebutton.markdoc';
 export * from './showtypographyexamples.markdoc';
 export * from './curlsnippet.markdoc'

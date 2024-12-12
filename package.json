@@ -6,7 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@markdoc/markdoc": "latest",
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "@markdoc/markdoc": "^0.4.0",
     "@markdoc/next.js": "latest",
     "@trustpilot/constellation-components": "^6.12.0",
     "next": "latest",
@@ -19,6 +20,8 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "latest"
   }
 }

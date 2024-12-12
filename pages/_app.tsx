@@ -78,21 +78,26 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </TopNav>
       <div className="page">
         <SideNav />
-        <main className="flex column">
-        <ConstellationProvider locale="en-US">
-        <Component {...pageProps} />
-    </ConstellationProvider>
+        <main className="main-content">
+          <ConstellationProvider locale="en-US">
+            <Component {...pageProps} />
+          </ConstellationProvider>
         </main>
         <TableOfContents toc={toc} />
       </div>
       <style jsx>
         {`
           .page {
-            position: fixed; 
-            top: var(--top-nav-height);
             display: flex;
             width: 100vw;
+            height: 100vh;
+          }
+          .main-content {
+            margin-left: 250px; /* Same width as the sidenav */
+            padding: 20px;
+            padding-top: 60px; /* Add padding at the top */
             flex-grow: 1;
+            overflow: auto;
           }
           main {
             overflow: auto;
