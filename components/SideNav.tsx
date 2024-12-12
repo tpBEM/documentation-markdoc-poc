@@ -60,7 +60,7 @@ export function SideNav() {
         <span className="title">Endpoints</span>
         <ul className="flex column">
           {endpoints.map((link) => {
-            const active = router.pathname === link.href;
+            const active = router.pathname === link.href || router.asPath === link.href;
             return (
               <li key={link.href} className={active ? 'active' : ''}>
                 <Link href={link.href} legacyBehavior>
@@ -80,6 +80,7 @@ export function SideNav() {
           height: 100%;
           background-color: black;
           padding: 20px;
+          margin-top: 10px;
           box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
           overflow-y: auto;
         }
