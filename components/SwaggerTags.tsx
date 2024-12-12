@@ -24,7 +24,6 @@ export const Endpoint: React.FC<{ path: string; method: string; summary: string;
       <h3><strong>Method:</strong> {method.toUpperCase()}</h3>
       <p><strong>Summary:</strong> {summary}</p>
       <p><strong>Description:</strong> {description}</p>
-      <ul>{children}</ul>
       <style jsx>{`
         .endpoint {
           border: 1px solid #ddd;
