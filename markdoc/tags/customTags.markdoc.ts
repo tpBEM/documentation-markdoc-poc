@@ -15,6 +15,7 @@ export const swaggerTags: Record<string, Schema> = {
     attributes: {
       code: { type: String, required: true },
       description: { type: String, required: true },
+      example: { type: String, required: true },
     },
   },
   endpoint: {
