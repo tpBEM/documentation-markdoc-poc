@@ -32,18 +32,65 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "example": {
+                            "links": [
+                              {
+                                "href": "<Url for the resource>",
+                                "method": "<Http method for the resource>",
+                                "rel": "<Description of the relation>"
+                              }
+                            ],
+                            "id": "507f191e810c19729de860ea",
+                            "displayName": "Trustpilot",
+                            "name": {
+                              "identifying": "trustpilot.com",
+                              "referring": [
+                                "trustpilot.com",
+                                "www.trustpilot.com"
+                              ]
+                            },
+                            "websiteUrl": "http://www.trustpilot.com",
+                            "country": "DK",
+                            "numberOfReviews": {
+                              "total": 14,
+                              "usedForTrustScoreCalculation": 12,
+                              "oneStar": 2,
+                              "twoStars": 3,
+                              "threeStars": 2,
+                              "fourStars": 5,
+                              "fiveStars": 2
+                            },
+                            "status": "active",
+                            "score": {
+                              "trustScore": 4.6,
+                              "stars": 4.5
+                            },
+                            "badFit": true
+                          },
                         "schema": {
                             "$ref": "#/definitions/businessunits.PublicGetBusinessUnitResponse"
                         }
                     },
                     "400": {
                         "description": "Name is not specified",
+                        "example": {
+                            "message": "Name is not specified",
+                            "errorCode": 400,
+                            "details": "Name is not specified",
+                            "correlationId": "f3586c0c-f3ea-4c6e-a7f7-64221259342"
+                          },
                         "schema": {
                             "$ref": "#/definitions/businessunits.Error"
                         }
                     },
                     "404": {
                         "description": "The business unit cannot be found",
+                        "example": {
+                            "message": "The business unit cannot be found",
+                            "errorCode": 404,
+                            "details": "The business unit cannot be found",
+                            "correlationId": "f3586c0c-f3ea-4c6e-a7f7-64221253424"
+                          },
                         "schema": {
                             "$ref": "#/definitions/businessunits.Error"
                         }
@@ -105,12 +152,48 @@
                 "responses": {
                     "400": {
                         "description": "If any of the query parameters fails to validate successfully",
+                        "example": {
+                            "message": "Invalid query parameter",
+                            "errorCode": 400,
+                            "details": "Invalid query parameter",
+                            "correlationId": "f3586c0c-f3ea-4c6e-a7f7-642212595sda"
+                          },
                         "schema": {
                             "$ref": "#/definitions/businessunits.Error"
                         }
                     },
                     "200": {
                         "description": "Success",
+                        "example": {
+                            "businessUnits": [
+                              {
+                                "id": "507f191e810c19729de860ea",
+                                "displayName": "Trustpilot",
+                                "name": {
+                                  "identifying": "trustpilot.com",
+                                  "referring": [
+                                    "trustpilot.com",
+                                    "www.trustpilot.com"
+                                  ]
+                                },
+                                "links": [
+                                  {
+                                    "href": "<Url for the resource>",
+                                    "method": "<Http method for the resource>",
+                                    "rel": "<Description of the relation>"
+                                  }
+                                ]
+                              }
+                            ],
+                            "cursor": null,
+                            "links": [
+                              {
+                                "href": "<Url for the resource>",
+                                "method": "<Http method for the resource>",
+                                "rel": "<Description of the relation>"
+                              }
+                            ]
+                          },
                         "schema": {
                             "$ref": "#/definitions/businessunits.PublicGetBusinessUnitListResponse"
                         }

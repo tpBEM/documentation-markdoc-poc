@@ -8,10 +8,11 @@ export const Parameter: React.FC<{ name: string; in: string; required: boolean; 
   );
 };
 
-export const Response: React.FC<{ code: string; description: string }> = ({ code, description }) => {
+export const Response: React.FC<{ code: string; description: string; example: string }> = ({ code, description, example }) => {
   return (
     <li>
-      <strong>{code}</strong>: {description}
+      <strong>{code}</strong>: {description} <br />
+      Example: <pre>{example}</pre>
     </li>
   );
 };

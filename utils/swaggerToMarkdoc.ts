@@ -24,6 +24,7 @@ export function swaggerToMarkdoc(path: string, method: string, details: any): an
         attributes: {
           code,
           description: (response as { description: string }).description,
+          example: (response as { example: string }).example,
         },
       });
     }

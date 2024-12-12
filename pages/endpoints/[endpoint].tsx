@@ -23,39 +23,50 @@ const EndpointPage: React.FC<EndpointPageProps> = ({ content }) => {
     .map((child: any) => ({
       code: child.attributes.code,
       description: child.attributes.description,
+      example: child.attributes.example,
     }));
 
   return (
-    <div>
-      <h1>API Documentation</h1>
-      <h2>Endpoint</h2>
-      <Endpoint
-        path={content.attributes.path}
-        method={content.attributes.method}
-        summary={content.attributes.summary}
-        description={content.attributes.description}
-      >
-        {content.children && content.children.map((child: any) => {
-          if (child.type === 'parameter') {
-            return (
-              <Parameter
-                key={child.attributes.name}
-                name={child.attributes.name}
-                in={child.attributes.in}
-                required={child.attributes.required}
-                type={child.attributes.type}
-              />
-            );
-          }
-          return null;
-        })}
-      </Endpoint>
-      <h2>Parameters</h2>
-      <ParametersTable parameters={content.children.filter((child: any) => child.type === 'parameter').map((child: any) => child.attributes)} />
-      <h2>Responses</h2>
-      <ResponseDetails responses={responses} />
-      <h2>Curl Command</h2>
-      <CurlSnippet command={curlCommand} lang="bash" />
+    <div className="page-container">
+      <div className="content-container">
+        <h1>API Documentation</h1>
+        <h2>Endpoint</h2>
+        <Endpoint
+          path={content.attributes.path}
+          method={content.attributes.method}
+          summary={content.attributes.summary}
+          description={content.attributes.description}
+        >
+          {content.children && content.children.map((child: any) => {
+            if (child.type === 'parameter') {
+              return (
+                <Parameter
+                  key={child.attributes.name}
+                  name={child.attributes.name}
+                  in={child.attributes.in}
+                  required={child.attributes.required}
+                  type={child.attributes.type}
+                />
+              );
+            }
+            return null;
+          })}
+        </Endpoint>
+        <h2>Parameters</h2>
+        <ParametersTable parameters={content.children.filter((child: any) => child.type === 'parameter').map((child: any) => child.attributes)} />
+        <h2>Responses</h2>
+        <ResponseDetails responses={responses} />
+        <h2>Curl Command</h2>
+        <CurlSnippet command={curlCommand} lang="bash" />
+      </div>
+      <style jsx>{`
+        .page-container {
+          position: relative;
+        }
+        .content-container {
+          padding: 20px;
+        }
+      `}</style>
     </div>
   );
 };
@@ -100,6 +111,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         attributes: {
           code,
           description: response.description,
+          example: response.example,
         },
       })),
     ],

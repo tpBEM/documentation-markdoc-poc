@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 interface ResponseDetailsProps {
-  responses: { code: string; description: string }[];
+  responses: { code: string; description: string; example?: any }[];
 }
 
 const ResponseDetails: React.FC<ResponseDetailsProps> = ({ responses }) => {
@@ -32,6 +32,12 @@ const ResponseDetails: React.FC<ResponseDetailsProps> = ({ responses }) => {
               <div key={response.code}>
                 <p><strong>Code:</strong> {response.code}</p>
                 <p><strong>Description:</strong> {response.description}</p>
+                {response.example && (
+                  <>
+                    <p><strong>Response example:</strong></p>
+                    <pre><code>{JSON.stringify(response.example, null, 2)}</code></pre>
+                  </>
+                )}
               </div>
             ))}
         </div>
